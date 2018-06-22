@@ -1,0 +1,13 @@
+{
+  "name": "eg-redux",
+  "version": "0.2.0",
+  "main": "src/index.js",
+  "author": "bgoodson@amica.com",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon --experimental-modules --watch src src/index.mjs"
+  },
+  "dependencies": {
+    "redux": "^4.0.0"
+  }
+}
