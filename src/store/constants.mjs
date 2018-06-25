@@ -1,7 +1,7 @@
 const constants = {
-    ADD_COLOR: 'ADD_COLOR',
-    RATE_COLOR: 'RATE_COLOR',
-    SORT_COLORS: 'SORT_COLORS'
+    POSTS_REQUEST: 'POSTS_REQUEST',
+    POSTS_SUCCESS: 'POSTS_SUCCESS',
+    POSTS_FAILURE: 'POSTS_FAILURE'
 }
 
 export default constants

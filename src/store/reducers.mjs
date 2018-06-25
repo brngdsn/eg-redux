@@ -1,43 +1,31 @@
 import C from './constants'
+import { fetchPosts } from './actions'
 
-export const color = (state={}, action) => {
+export const posts = (
+    state={
+        isFetching: false, error: null, data: []
+    },
+    action
+) => {
     switch (action.type) {
-        case C.ADD_COLOR:
+        case C.POSTS_REQUEST:
             return {
-                id: action.id,
-                color: action.color,
-                rating: 0
-            }
-        case C.RATE_COLOR:
-            return (state.id !== action.id) ? state : {
                 ...state,
-                rating: action.rating
+                isFetching: true
             }
-        default:
-            return state
-    }
-}
-
-export const colors = (state=[], action) => {
-    switch (action.type) {
-        case C.ADD_COLOR:
-            return [
+        case C.POSTS_SUCCESS:
+            return {
                 ...state,
-                color({}, action)
-            ]
-        case C.RATE_COLOR:
-            return state.map(c => color(c, action))
-        case C.SORT_COLORS:
-            return [...state].sort((a, b) => a.rating - b.rating)
-        default:
-            return state
-    }
-}
-
-export const sort = (state=`NONE`, action) => {
-    switch (action.type) {
-        case C.SORT_COLORS:
-            return action.sortBy
+                isFetching: false,
+                data: action.posts
+            }
+        case C.POSTS_FAILURE:
+            return {
+                ...state,
+                isFetching: false,
+                error: action.error,
+                data: []
+            }
         default:
             return state
     }

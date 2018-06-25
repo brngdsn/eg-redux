@@ -1,8 +1,11 @@
 import redux from 'redux'
-import { colors, sort } from './reducers'
+import thunk from 'redux-thunk'
+import { posts } from './reducers'
 import stateData from './initialState'
 
+// helpers
 const { createStore, combineReducers, applyMiddleware } = redux
+const thunkMiddleware = thunk.default
 
 // stub localStorage
 const localStorage = []
@@ -20,8 +23,8 @@ const saver = store => next => action => {
 }
 
 const storeFactory = (initialState=stateData) =>
-    applyMiddleware(logger, saver)(createStore)(
-        combineReducers({ colors, sort }),
+    applyMiddleware(logger, saver, thunkMiddleware)(createStore)(
+        combineReducers({ posts }),
         (localStorage['redux-store']) ?
             JSON.parse(localStorage['redux-store']) :
             stateData
