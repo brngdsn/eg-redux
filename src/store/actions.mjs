@@ -10,10 +10,10 @@ const postsRequest = (subreddit) => {
     }
 }
 
-const postsSuccess = (posts) => {
+const postsSuccess = (json) => {
     return {
         type: C.POSTS_SUCCESS,
-        posts
+        posts: json.data.children.map(c => c.data)
     }
 }
 
@@ -29,7 +29,7 @@ export const fetchPosts = (subreddit) => {
         dispatch(postsRequest(subreddit))
         return fetch(`https://www.reddit.com/r/${subreddit}.json`)
             .then(response => response.json())
-            .then(posts => dispatch(postsSuccess(posts.data.children)))
+            .then(json => dispatch(postsSuccess(json)))
             .catch(error => dispatch(postsFailure(error)))
     }
 }
