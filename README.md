@@ -6,4 +6,4 @@ Then `$ yarn dev` for dependencies.
 
 # branches
 
-The master branch will have a primitive example of redux, and coincides with the Redux 101 powerpoint. You can checkout the 201 branch to see the examples of redux with asynchronous data flows.
+The master branch will have a primitive example of redux, and coincides with the Redux 101 powerpoint. You can checkout the `async-201` branch to see the examples of redux with asynchronous data flows, which coincides with the Redux 201 powerpoint.
